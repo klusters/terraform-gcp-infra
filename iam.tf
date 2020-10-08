@@ -3,6 +3,7 @@ module "ansible_sa" {
   version       = "~> 3.0"
   project_id    = var.project_id
   names         = ["ansible-sa"]
+  display_name  = "ansible-sa"
   generate_keys = true
   project_roles = [
     "${var.project_id}=>roles/compute.instanceAdmin",
