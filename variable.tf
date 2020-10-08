@@ -14,3 +14,8 @@ variable "instance_roles" {
   description = "Instances roles specifications"
   default = {}
 }
+
+variable "ssh_public_key" {
+  description = "SSH public key path to authorize"
+  default     = "~/.ssh/id_rsa.pub"
+}

@@ -23,6 +23,9 @@ module "instances-templates" {
 
   labels = each.value.labels
 
+  access_config = each.value.access_config != "" ? each.value.access_config : []
+  
+  tags = each.value.tags
 }
 
 ## add machine types

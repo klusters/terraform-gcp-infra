@@ -15,8 +15,7 @@ module "managed-instance-groups" {
 
   autoscaling_enabled = false
 
-  min_replicas = 1
-  max_replicas = 1
+  target_size = each.value.count
 
 }
 

@@ -30,3 +30,34 @@ module "subnets" {
 }
 
 ## vars : vpc name, subnets name, regions and ip
+
+module "net-firewall" {
+  source                  = "terraform-google-modules/network/google//modules/fabric-net-firewall"
+  version = "~> 2.5.0"
+  project_id   = var.project_id
+  network = module.vpc.network_name
+  
+  internal_ranges_enabled = false
+  internal_ranges         = ["10.0.0.0/0"]
+  internal_target_tags    = ["internal"]
+  ssh_source_ranges = ["82.64.75.188/32"]
+  ssh_target_tags = ["ssh-front"]
+  custom_rules = {
+    ingress-sample = {
+      description          = "SSH from jump host / bastion"
+      direction            = "INGRESS"
+      action               = "allow"
+      ranges               = []
+      sources              = ["ssh-front"]
+      targets              = ["ssh-back"]
+      use_service_accounts = false
+      rules = [
+        {
+          protocol = "tcp"
+          ports    = ["22"]
+        }
+      ]
+      extra_attributes = {}
+    }
+  }
+}
