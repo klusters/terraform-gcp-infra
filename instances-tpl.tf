@@ -29,5 +29,5 @@ module "instances-templates" {
 
   machine_type = each.value.machine_type
 
-  preemptible = each.value.preemtible
+  preemptible = each.value.preemptible
 }
