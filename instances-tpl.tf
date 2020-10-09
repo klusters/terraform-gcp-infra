@@ -24,9 +24,10 @@ module "instances-templates" {
   labels = each.value.labels
 
   access_config = each.value.access_config != "" ? each.value.access_config : []
-  
-  tags = each.value.tags
-}
 
-## add machine types
-## add network tags
+  tags = each.value.tags
+
+  machine_type = each.value.machine_type
+
+  preemptible = each.value.preemtible
+}
