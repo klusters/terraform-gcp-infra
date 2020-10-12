@@ -30,4 +30,6 @@ module "instances-templates" {
   machine_type = each.value.machine_type
 
   preemptible = each.value.preemptible
+
+  additional_disks = each.value.additional_disks
 }
