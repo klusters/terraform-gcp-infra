@@ -40,7 +40,7 @@ module "net-firewall" {
   internal_ranges_enabled = false
   internal_ranges         = ["10.0.0.0/0"]
   internal_target_tags    = ["internal"]
-  ssh_source_ranges = ["82.64.75.188/32"]
+  ssh_source_ranges = ["${chomp(data.http.my_public_ip.body)}/32"]
   ssh_target_tags = ["ssh-front"]
   custom_rules = {
     ingress-sample = {
