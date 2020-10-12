@@ -61,3 +61,14 @@ module "net-firewall" {
     }
   }
 }
+
+module "cloud-nat" {
+  source     = "terraform-google-modules/cloud-nat/google"
+  version    = "~> 1.2"
+  project_id = var.project_id
+  region     = var.region
+
+  network = module.vpc.network_name
+  create_router     = true
+  router = "routername"
+}
