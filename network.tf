@@ -70,7 +70,7 @@ module "net-firewall" {
       rules = [
         {
           protocol = "tcp"
-          ports    = ["es-http", "es-transport"]
+          ports    = ["9200", "9300"]
         }
       ]
       extra_attributes = {}
