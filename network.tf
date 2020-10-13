@@ -43,7 +43,7 @@ module "net-firewall" {
   ssh_source_ranges = ["${chomp(data.http.my_public_ip.body)}/32"]
   ssh_target_tags = ["ssh-front"]
   custom_rules = {
-    ingress-sample = {
+    internal-ssh = {
       description          = "SSH from jump host / bastion"
       direction            = "INGRESS"
       action               = "allow"
@@ -58,7 +58,24 @@ module "net-firewall" {
         }
       ]
       extra_attributes = {}
-    }
+    },
+    internal-elasticsearch = {
+      description          = "Intra cluster ssh rules"
+      direction            = "INGRESS"
+      action               = "allow"
+      ranges               = []
+      sources              = ["es-cluster"]
+      targets              = ["es-cluster"]
+      use_service_accounts = false
+      rules = [
+        {
+          protocol = "tcp"
+          ports    = ["es-http", "es-transport"]
+        }
+      ]
+      extra_attributes = {}
+    },
+
   }
 }
 
