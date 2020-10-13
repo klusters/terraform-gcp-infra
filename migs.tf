@@ -16,7 +16,7 @@ module "managed-instance-groups" {
   autoscaling_enabled = false
 
   target_size = each.value.count
-
+  named_ports = each.value.named_ports
 }
 
 ## autoscaling
