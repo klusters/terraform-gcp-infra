@@ -19,3 +19,8 @@ variable "ssh_public_key" {
   description = "SSH public key path to authorize"
   default     = "~/.ssh/id_rsa.pub"
 }
+
+variable "ansible_sa_name" {
+  type = string
+  default = "ansible_sa"
+}

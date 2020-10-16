@@ -2,8 +2,8 @@ module "ansible_sa" {
   source        = "terraform-google-modules/service-accounts/google"
   version       = "~> 3.0"
   project_id    = var.project_id
-  names         = ["ansible-sa"]
-  display_name  = "ansible-sa"
+  names         = [var.ansible_sa_name]
+  display_name  = var.ansible_sa_name
   generate_keys = true
   project_roles = [
     "${var.project_id}=>roles/compute.instanceAdmin",
