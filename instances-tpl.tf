@@ -6,7 +6,7 @@ module "instances-templates" {
   region     = var.region
 
   service_account = {
-    scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+    scopes = ["userinfo-email", "compute-rw", "storage-ro"]
     email  = data.google_compute_default_service_account.default.email
   }
 
