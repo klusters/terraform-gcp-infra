@@ -1,6 +1,5 @@
 module "ansible_sa" {
   source        = "terraform-google-modules/service-accounts/google"
-  version       = "~> 3.0"
   project_id    = var.project_id
   names         = [var.ansible_sa_name]
   display_name  = var.ansible_sa_name
@@ -15,7 +14,6 @@ module "ansible_sa" {
 ## SSH key can only be provided by end user. Impersonation needed
 module "service_account-iam-bindings" {
   source = "terraform-google-modules/iam/google//modules/service_accounts_iam"
-  version       = "~> 6.3"
   project          = var.project_id
 
   service_accounts = [module.ansible_sa.email]

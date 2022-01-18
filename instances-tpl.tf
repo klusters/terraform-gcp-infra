@@ -1,6 +1,5 @@
 module "instances-templates" {
   source  = "terraform-google-modules/vm/google//modules/instance_template"
-  version = "~> 5.0.0"
 
   project_id = var.project_id
   region     = var.region

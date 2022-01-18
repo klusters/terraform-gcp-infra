@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "github-ci-290307-actions-tfstates"
-    prefix = "env/terraform-gcp-infra"
+    bucket = "github-ci-carbide-haven-334802-tfstates"
+    prefix = "gce"
   }
 }

@@ -1,7 +1,6 @@
 
 module "managed-instance-groups" {
   source  = "terraform-google-modules/vm/google//modules/mig"
-  version = "~> 5.0.0"
 
   project_id = var.project_id
   region     = var.region
