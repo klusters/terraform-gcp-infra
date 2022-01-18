@@ -1,6 +1,5 @@
 module "vpc" {
   source  = "terraform-google-modules/network/google//modules/vpc"
-  version = "~> 2.5.0"
 
   project_id   = var.project_id
   network_name = "klusters-infra"
@@ -10,7 +9,6 @@ module "vpc" {
 
 module "subnets" {
   source  = "terraform-google-modules/network/google//modules/subnets-beta"
-  version = "~> 2.5.0"
 
   project_id   = var.project_id
   network_name = module.vpc.network_name
@@ -35,7 +33,6 @@ module "subnets" {
 
 module "net-firewall" {
   source                  = "terraform-google-modules/network/google//modules/fabric-net-firewall"
-  version = "~> 2.5.0"
   project_id   = var.project_id
   network = module.vpc.network_name
   
@@ -83,7 +80,6 @@ module "net-firewall" {
 
 module "cloud-nat" {
   source     = "terraform-google-modules/cloud-nat/google"
-  version    = "~> 1.2"
   project_id = var.project_id
   region     = var.region
 
