@@ -1,35 +1,26 @@
-module "vpc" {
-  source  = "terraform-google-modules/network/google//modules/vpc"
+module "network" {
+  source  = "terraform-google-modules/network/google"
+  version = "~> 4.0"
 
   project_id   = var.project_id
   network_name = "klusters-infra"
-
-  shared_vpc_host = false
-}
-
-module "subnets" {
-  source  = "terraform-google-modules/network/google//modules/subnets-beta"
-
-  project_id   = var.project_id
-  network_name = module.vpc.network_name
+  routing_mode = "GLOBAL"
 
   subnets = [
     {
       subnet_name   = "subnet-01"
       subnet_ip     = "10.10.10.0/24"
-      subnet_region = "europe-west1"
+      subnet_region = var.region
       subnet_private_access = true
     },
     {
       subnet_name   = "subnet-02"
       subnet_ip     = "10.10.20.0/24"
-      subnet_region = "europe-west1"
+      subnet_region = var.region
       subnet_private_access = true
     }
   ]
 }
-
-## vars : vpc name, subnets name, regions and ip
 
 module "net-firewall" {
   source                  = "terraform-google-modules/network/google//modules/fabric-net-firewall"
@@ -83,7 +74,7 @@ module "cloud-nat" {
   project_id = var.project_id
   region     = var.region
 
-  network = module.vpc.network_name
+  network = module.network.network_name
   create_router     = true
   router = "routername"
 }
