@@ -25,7 +25,7 @@ module "network" {
 module "net-firewall" {
   source                  = "terraform-google-modules/network/google//modules/fabric-net-firewall"
   project_id   = var.project_id
-  network = module.vpc.network_name
+  network = module.network.network_name
   
   internal_ranges_enabled = false
   internal_ranges         = ["10.0.0.0/0"]
