@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "github-ci-carbide-haven-334802-tfstates"
+    bucket = "altus-le-1er-tfstates"
     prefix = "gce"
   }
 }

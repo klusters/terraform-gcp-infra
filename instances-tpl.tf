@@ -12,7 +12,7 @@ module "instances-templates" {
   for_each    = var.instance_roles
   name_prefix = each.value.instance_name
 
-  subnetwork         = module.subnets.subnets["${var.region}/${each.value.subnetwork}"].name
+  subnetwork         = module.network.subnets["${var.region}/${each.value.subnetwork}"].name
   subnetwork_project = var.project_id
 
   disk_size_gb = each.value.disk_size_gb

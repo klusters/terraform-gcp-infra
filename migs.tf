@@ -10,7 +10,7 @@ module "managed-instance-groups" {
   hostname          = each.value.instance_name
   instance_template = module.instances-templates[each.key].self_link
 
-  subnetwork = module.subnets.subnets["${var.region}/${each.value.subnetwork}"].name
+  subnetwork = module.network.subnets["${var.region}/${each.value.subnetwork}"].name
 
   autoscaling_enabled = false
 

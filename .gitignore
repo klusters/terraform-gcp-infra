@@ -106,3 +106,5 @@ override.tf.json
 
 # End of https://www.toptal.com/developers/gitignore/api/terraform,macos,visualstudiocode,sublimetext
 terraform.tfvars.json
+
+.terraform.lock.hcl
