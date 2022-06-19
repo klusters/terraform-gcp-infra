@@ -14,6 +14,7 @@ module "managed-instance-groups" {
 
   autoscaling_enabled = false
 
+  distribution_policy_zones = each.value.distribution_policy_zones
   target_size = each.value.count
   named_ports = each.value.named_ports
 }
