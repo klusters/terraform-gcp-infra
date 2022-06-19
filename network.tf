@@ -49,18 +49,18 @@ module "net-firewall" {
       ]
       extra_attributes = {}
     },
-    internal-elasticsearch = {
-      description          = "Intra cluster ssh rules"
+    internal-cluster = {
+      description          = "Intra cluster rules"
       direction            = "INGRESS"
       action               = "allow"
       ranges               = []
-      sources              = ["es-cluster"]
-      targets              = ["es-cluster"]
+      sources              = ["cdp-cluster"]
+      targets              = ["cdp-cluster"]
       use_service_accounts = false
       rules = [
         {
-          protocol = "tcp"
-          ports    = ["9200", "9300"]
+          protocol = "all"
+          ports    = []
         }
       ]
       extra_attributes = {}
