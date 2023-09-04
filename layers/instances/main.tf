@@ -14,6 +14,7 @@ module "instance_template" {
   labels               = each.value.labels
   disk_size_gb         = each.value.disk_size_gb
   additional_disks     = each.value.additional_disks
+  access_config        = each.value.access_config != "" ? each.value.access_config : []
 }
 
 module "compute_instance" {
