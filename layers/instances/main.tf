@@ -1,7 +1,7 @@
 module "instance_template" {
   # source               = "terraform-google-modules/vm/google//modules/instance_template"
   # version              = "8.0.1"
-  source = "git::https://github.com/anisf/terraform-google-vm.git?ref=feature%2Fit_disk_from_snapshot"
+  source = "git::https://github.com/anisf/terraform-google-vm.git//modules/instance_template?ref=feature%2Fit_disk_from_snapshot"
 
   project_id           = var.instances_project_id
   for_each             = var.instance_roles
