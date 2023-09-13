@@ -10,6 +10,7 @@ module "instance_template" {
   service_account      = each.value.service_account
   machine_type         = each.value.machine_type
   preemptible          = each.value.preemptible
+  spot                 = each.value.spot
   tags                 = each.value.tags
   source_image         = each.value.source_image
   source_image_project = each.value.source_image_project
