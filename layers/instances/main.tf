@@ -4,8 +4,8 @@ module "instance_template" {
 
   project_id           = var.instances_project_id
   for_each             = var.instance_roles
-  subnetwork           = data.terraform_remote_state.network.outputs.subnets["${var.region}/${each.value.subnetwork}"].name
-  subnetwork_project   = var.instances_project_id
+  subnetwork           = data.terraform_remote_state.network.outputs.subnets["${var.instances_region}/${each.value.subnetwork}"].name
+  subnetwork_project   = var.network_project_id
   service_account      = each.value.service_account
   machine_type         = each.value.machine_type
   preemptible          = each.value.preemptible
@@ -22,7 +22,7 @@ module "instance_template" {
 
 module "compute_instance" {
   source              = "terraform-google-modules/vm/google//modules/compute_instance"
-  version             = "8.0.1"
+  version              = "10.1.1"
   for_each            = var.instance_roles
   num_instances       = each.value.count
   hostname            = "${each.value.labels.app}-${each.value.labels.environment}-${each.value.labels.role}"

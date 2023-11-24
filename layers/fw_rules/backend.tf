@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
     bucket = "cdp-training-ses-remote-tfstates"
-    prefix = "instances"
+    prefix = "fw-rules"
   }
 }
