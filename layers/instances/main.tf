@@ -25,7 +25,7 @@ module "compute_instance" {
   version              = "10.1.1"
   for_each            = var.instance_roles
   num_instances       = each.value.count
-  hostname            = "${each.value.labels.app}-${each.value.labels.environment}-${each.value.labels.role}"
+  hostname            = try(each.value.hostname, "${each.value.labels.app}-${each.value.labels.environment}-${each.value.labels.role}")
   instance_template   = module.instance_template[each.key].self_link
   deletion_protection = false
 }
