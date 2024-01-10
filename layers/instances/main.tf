@@ -22,11 +22,12 @@ module "instance_template" {
 }
 
 module "compute_instance" {
-  source              = "terraform-google-modules/vm/google//modules/compute_instance"
-  version              = "10.1.1"
-  for_each            = var.instance_roles
-  num_instances       = each.value.count
-  hostname            = try(each.value.hostname, "${each.value.labels.app}-${each.value.labels.environment}-${each.value.labels.role}")
-  instance_template   = module.instance_template[each.key].self_link
-  deletion_protection = false
+  source                    = "terraform-google-modules/vm/google//modules/compute_instance"
+  version                   = "10.1.1"
+  for_each                  = var.instance_roles
+  num_instances             = each.value.count
+  hostname                  = try(each.value.hostname, "${each.value.labels.app}-${each.value.labels.environment}-${each.value.labels.role}")
+  instance_template         = module.instance_template[each.key].self_link
+  hostname_suffix_separator = var.hostname_suffix_separator
+  deletion_protection       = false
 }

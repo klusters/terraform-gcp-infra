@@ -15,3 +15,9 @@ variable "instance_roles" {
 variable "instances_region" {
   description = "Region where the instances will be created"
 }
+
+variable "hostname_suffix_separator" {
+  type        = string
+  description = "Separator character to compose hostname when add_hostname_suffix is set to true."
+  default     = "-"
+}
