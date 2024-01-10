@@ -1,7 +1,6 @@
 module "instance_template" {
-  # source               = "terraform-google-modules/vm/google//modules/instance_template"
-  # version              = "10.1.1"
-  source = "git::https://github.com/anisf/terraform-google-vm.git?ref=feat/prefix-sep"
+  source               = "terraform-google-modules/vm/google//modules/instance_template"
+  version              = "10.1.1"
 
   project_id           = var.instances_project_id
   for_each             = var.instance_roles
